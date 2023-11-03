@@ -21,8 +21,10 @@
         "nunomaduro/termwind": "^1.15.1"
     },
     "require-dev": {
+        "igorsgm/laravel-git-hooks": "^1.1",
         "laravel/pint": "^1.13",
         "mockery/mockery": "^1.6",
+        "nunomaduro/larastan": "^2.0",
         "pestphp/pest": "^2.22"
     },
     "autoload": {

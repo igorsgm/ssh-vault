@@ -1,0 +1,16 @@
+includes:
+  - ./vendor/nunomaduro/larastan/extension.neon
+parameters:
+  paths:
+    - app
+    - bootstrap
+    - config
+  level: 5
+  checkMissingIterableValueType: false
+  checkGenericClassInNonGenericObjectType: false
+#    ignoreErrors:
+#        - '#PHPDoc tag @var#'
+#
+#    excludePaths:
+#        - ./*/*/FileToBeExcluded.php
+#
