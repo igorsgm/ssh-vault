@@ -2,6 +2,8 @@
 
 namespace App\SshConfig;
 
+use App\Host;
+
 class SshConfig
 {
     private SshConfigParser $parser;
@@ -27,7 +29,7 @@ class SshConfig
     /**
      * Write new hosts to ssh config file
      */
-    public function sync()
+    public function sync(): self
     {
         $result = '';
         foreach ($this->hosts() as $host) {
@@ -36,22 +38,28 @@ class SshConfig
         }
 
         file_put_contents($this->configFilePath(), $result);
+
+        return $this;
     }
 
     /**
      * Add new host to ssh config
      */
-    public function add($host)
+    public function add($host): self
     {
         $this->hosts[] = $host;
+
+        return $this;
     }
 
     /**
      * Remove host by index
      */
-    public function remove($index)
+    public function remove($index): self
     {
         unset($this->hosts[$index]);
+
+        return $this;
     }
 
     /**
@@ -76,6 +84,13 @@ class SshConfig
     public function content(): string
     {
         return file_get_contents($this->configFilePath());
+    }
+
+    public function lastHost(): ?Host
+    {
+        $last = last($this->hosts());
+
+        return $last ?? null;
     }
 
     private function configFilePath()
