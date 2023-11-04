@@ -274,14 +274,6 @@ trait InteractsWithIO
     }
 
     /**
-     * Whether the command should skip the build process of the app or not.
-     */
-    public function isToSkipBuild(): bool
-    {
-        return $this->isOptionEnabled('no-build') || empty($this->option('no-build'));
-    }
-
-    /**
      * Retrieves the "quiet" flag based on the verbosity setting.
      */
     public function quietFlag(): string
