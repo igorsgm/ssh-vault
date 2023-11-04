@@ -18,7 +18,10 @@ class ListCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'hosts:list {--output=list : The output format (list, table, raw)}';
+    protected $signature = 'hosts:list
+                        {--table : Display the output in table format}
+                        {--list : Display the output in list format}
+                        {--raw : Display the raw SSH configuration}';
 
     /**
      * The description of the command.
@@ -39,20 +42,18 @@ class ListCommand extends Command
         $this->step('Hosts');
         $hosts = $sshConfig->hosts();
 
-        switch ($this->option('output')) {
-            case 'table':
-                $this->displayTable($hosts);
-                break;
-            case 'raw':
-                $this->line($sshConfig->content());
-                break;
-            case 'list':
-            default:
-                $this->displayList($hosts);
-                break;
+        if ($this->option('table')) {
+            return $this->displayTable($hosts);
         }
 
-        return 0;
+        if ($this->option('raw')) {
+            $this->line($sshConfig->content());
+
+            return 0;
+        }
+
+        // Default to list if no other option is provided
+        return $this->displayList($hosts);
     }
 
     /**
@@ -63,7 +64,7 @@ class ListCommand extends Command
      *
      * @param  array  $hosts An array of hosts to be displayed.
      */
-    protected function displayTable(array $hosts): void
+    protected function displayTable(array $hosts): int
     {
         $columns = ['', 'Host', 'HostName', 'User', 'Port', 'RemoteCommand'];
 
@@ -101,6 +102,8 @@ class ListCommand extends Command
 
         // Output the table with filtered columns and rows
         table($filteredHeaders, $filteredRows->toArray());
+
+        return 0;
     }
 
     /**
@@ -111,7 +114,7 @@ class ListCommand extends Command
      *
      * @param  array  $hosts An array of hosts to be displayed.
      */
-    public function displayList(array $hosts): void
+    public function displayList(array $hosts): int
     {
         $maxNameLength = collect($hosts)->max(fn ($host) => mb_strlen($host->name));
 
@@ -130,5 +133,7 @@ class ListCommand extends Command
                 "<comment>{$host->hostName()}</comment>"
             ));
         }
+
+        return 0;
     }
 }
