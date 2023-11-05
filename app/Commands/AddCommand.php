@@ -5,6 +5,7 @@ namespace App\Commands;
 use App\Concerns\InteractsWithIO;
 use App\Host;
 use App\SshConfig\SshConfig;
+use Illuminate\Support\Facades\File;
 use LaravelZero\Framework\Commands\Command;
 
 use function Laravel\Prompts\confirm;
@@ -79,7 +80,7 @@ class AddCommand extends Command
             validate: function ($path) {
                 $path = str_replace('~', getenv('HOME'), $path);
 
-                return ! empty($path) && ! is_file($path) ? "Error: file not found at $path" : null;
+                return ! empty($path) && ! File::exists($path) ? "Error: file not found at $path" : null;
             },
             hint: 'Example: ~/.ssh. Leave empty to use the same identity file as your local machine',
         );

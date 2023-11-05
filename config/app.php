@@ -40,7 +40,7 @@ return [
     |
     */
 
-    'env' => 'development',
+    'env' => env('APP_ENV', 'development'),
 
     /*
     |--------------------------------------------------------------------------
@@ -71,5 +71,12 @@ return [
         \Igorsgm\GitHooks\GitHooksServiceProvider::class,
         \App\Providers\SshConfigServiceProvider::class,
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | SSH Config File Path
+    |--------------------------------------------------------------------------
+    */
+    'ssh-config-path' => env('SSH_CONFIG_PATH', '~/.ssh/config'),
 
 ];

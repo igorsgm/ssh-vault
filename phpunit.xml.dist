@@ -12,6 +12,12 @@
             <directory suffix="Test.php">./tests/Unit</directory>
         </testsuite>
     </testsuites>
+
+    <php>
+        <!-- Set the APP_ENV environment variable to 'testing' -->
+        <env name="APP_ENV" value="testing"/>
+    </php>
+
     <source>
         <include>
             <directory suffix=".php">./app</directory>

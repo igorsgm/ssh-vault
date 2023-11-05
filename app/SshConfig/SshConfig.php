@@ -4,6 +4,7 @@ namespace App\SshConfig;
 
 use App\Host;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\File;
 
 class SshConfig
 {
@@ -23,7 +24,7 @@ class SshConfig
     public function load(): Collection
     {
         $configFilePath = $this->configFilePath();
-        $this->hosts = file_exists($configFilePath) ? $this->parser->parse($this->content()) : collect();
+        $this->hosts = File::exists($configFilePath) ? $this->parser->parse($this->content()) : collect();
 
         return $this->hosts;
     }
@@ -37,7 +38,7 @@ class SshConfig
             return $carry.$host."\n";
         }, '');
 
-        file_put_contents($this->configFilePath(), $result);
+        File::put($this->configFilePath(), $result);
 
         return $this;
     }
@@ -83,7 +84,7 @@ class SshConfig
      */
     public function content(): string
     {
-        return file_get_contents($this->configFilePath());
+        return File::get($this->configFilePath());
     }
 
     /**
@@ -99,14 +100,8 @@ class SshConfig
      */
     private function configFilePath(): string
     {
-        return $this->homeFolderPath().'/.ssh/config';
-    }
+        $path = rtrim(config('app.ssh-config-path'), '/');
 
-    /**
-     * Get the path to the home folder.
-     */
-    private function homeFolderPath(): string
-    {
-        return rtrim(getenv('HOME'), '/');
+        return str_replace('~', getenv('HOME'), $path);
     }
 }
