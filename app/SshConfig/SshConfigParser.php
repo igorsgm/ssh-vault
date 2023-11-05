@@ -3,6 +3,7 @@
 namespace App\SshConfig;
 
 use App\Host;
+use Illuminate\Support\Collection;
 
 class SshConfigParser
 {
@@ -14,12 +15,12 @@ class SshConfigParser
      * Parse ssh config content provided as input parameter.
      *
      * @param  string  $fileContent The content of the SSH configuration file.
-     * @return Host[] An array of Host objects.
+     * @return Collection A collection of Host objects.
      */
-    public function parse(string $fileContent): array
+    public function parse(string $fileContent): Collection
     {
         $lines = explode("\n", $fileContent);
-        $hosts = [];
+        $hosts = collect();
         $currentHost = null;
 
         foreach ($lines as $line) {
@@ -28,19 +29,15 @@ class SshConfigParser
                 continue;
             }
 
-            $matches = $this->parseLine($line);
+            if ($matches = $this->parseLine($line)) {
+                [$key, $value] = $matches;
 
-            if (empty($matches)) {
-                continue;
-            }
-
-            [$_, $key, $value] = $this->parseLine($line);
-
-            if ($key === self::HOST_KEYWORD) {
-                $currentHost = new Host($value);
-                $hosts[] = $currentHost;
-            } else {
-                $currentHost->addParameter($key, $value);
+                if ($key === self::HOST_KEYWORD) {
+                    $currentHost = new Host($value);
+                    $hosts->push($currentHost);
+                } elseif ($currentHost) {
+                    $currentHost->addParameter($key, $value);
+                }
             }
         }
 
@@ -51,12 +48,15 @@ class SshConfigParser
      * Parse a line of the SSH configuration.
      *
      * @param  string  $line A line from the SSH configuration file.
-     * @return array An array containing the key and value, if found.
+     * @return array|null An array containing the key and value, if found.
      */
-    private function parseLine(string $line): array
+    private function parseLine(string $line): ?array
     {
-        preg_match(self::SECTION_PATTERN, trim($line), $matches);
+        if (preg_match(self::SECTION_PATTERN, trim($line), $matches)) {
+            // Omit the full match and return only the key and value
+            return array_slice($matches, 1, 2);
+        }
 
-        return $matches;
+        return null;
     }
 }

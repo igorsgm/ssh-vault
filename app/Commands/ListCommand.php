@@ -36,19 +36,19 @@ class ListCommand extends Command
         $this->step('Hosts');
         $hosts = $sshConfig->hosts();
 
-        $maxNameLength = collect($hosts)->max(fn ($host) => mb_strlen($host->name));
+        $maxNameLength = collect($hosts)->max(fn ($host) => mb_strlen($host->getName()));
 
         $lastIndexLength = mb_strlen((string) count($hosts));
         foreach ($hosts as $index => $host) {
             $index++;
-            $nameLength = $maxNameLength - mb_strlen($host->name);
+            $nameLength = $maxNameLength - mb_strlen($host->getName());
             $indexLength = $lastIndexLength - mb_strlen((string) $index);
             $paddingLength = $nameLength + $indexLength + 2;
 
             $this->line(sprintf(
                 '  <fg=gray>[%s]</> <fg=green>%s</>%s%s',
                 $index,
-                $host->name,
+                $host->getName(),
                 str_repeat(' ', $paddingLength),
                 "<comment>{$host->hostName()}</comment>"
             ));

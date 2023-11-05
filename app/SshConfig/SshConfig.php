@@ -3,39 +3,39 @@
 namespace App\SshConfig;
 
 use App\Host;
+use Illuminate\Support\Collection;
 
 class SshConfig
 {
     private SshConfigParser $parser;
 
-    private array $hosts = [];
+    private Collection $hosts;
 
     public function __construct()
     {
         $this->parser = new SshConfigParser();
+        $this->hosts = collect();
     }
 
     /**
-     * Load hosts from ssh config file
+     * Load hosts from the ssh config file.
      */
-    public function load()
+    public function load(): Collection
     {
         $configFilePath = $this->configFilePath();
-        $this->hosts = file_exists($configFilePath) ? $this->parser->parse($this->content()) : [];
+        $this->hosts = file_exists($configFilePath) ? $this->parser->parse($this->content()) : collect();
 
-        return $this->hosts();
+        return $this->hosts;
     }
 
     /**
-     * Write new hosts to ssh config file
+     * Write new hosts to the ssh config file.
      */
     public function sync(): self
     {
-        $result = '';
-        foreach ($this->hosts() as $host) {
-            $result .= $host;
-            $result .= "\n";
-        }
+        $result = $this->hosts->reduce(function ($carry, $host) {
+            return $carry.$host."\n";
+        }, '');
 
         file_put_contents($this->configFilePath(), $result);
 
@@ -43,63 +43,70 @@ class SshConfig
     }
 
     /**
-     * Add new host to ssh config
+     * Add a new host to the ssh config.
      */
-    public function add($host): self
+    public function add(Host $host): self
     {
-        $this->hosts[] = $host;
+        $this->hosts->push($host);
 
         return $this;
     }
 
     /**
-     * Remove host by index
+     * Remove a host by name of the SSH host
      */
-    public function remove($index): self
+    public function remove(string $name): self
     {
-        unset($this->hosts[$index]);
+        $this->hosts = $this->hosts->reject(fn (Host $host) => $host->getName() === $name);
 
         return $this;
     }
 
     /**
-     * Get hosts
+     * Get the collection of hosts.
      */
-    public function hosts()
+    public function hosts(): Collection
     {
         return $this->hosts;
     }
 
     /**
-     * Check if ssh config is empty
+     * Check if the ssh config is empty.
      */
-    public function isEmpty()
+    public function isEmpty(): bool
     {
-        return count($this->hosts()) == 0;
+        return $this->hosts->isEmpty();
     }
 
     /**
-     * Get the content of the config file
+     * Get the content of the config file.
      */
     public function content(): string
     {
         return file_get_contents($this->configFilePath());
     }
 
+    /**
+     * Get the last host of the collection.
+     */
     public function lastHost(): ?Host
     {
-        $last = last($this->hosts());
-
-        return $last ?? null;
+        return $this->hosts->last();
     }
 
-    private function configFilePath()
+    /**
+     * Get the path to the ssh config file.
+     */
+    private function configFilePath(): string
     {
         return $this->homeFolderPath().'/.ssh/config';
     }
 
-    private function homeFolderPath()
+    /**
+     * Get the path to the home folder.
+     */
+    private function homeFolderPath(): string
     {
-        return rtrim(getenv('HOME'));
+        return rtrim(getenv('HOME'), '/');
     }
 }

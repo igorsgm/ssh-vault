@@ -47,7 +47,7 @@ class TableCommand extends Command
 
             return [
                 'index' => '<fg=gray>'.$index.'</>',
-                'Host' => "<info>$host->name</info>",
+                'Host' => "<info>{$host->getName()}</info>",
                 'HostName' => "<comment>{$host->hostName()}</comment>",
                 'User' => $host->user(),
                 'Port' => $host->port(),

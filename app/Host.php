@@ -10,13 +10,13 @@ class Host
     /**
      * The name of the SSH host.
      */
-    public string $name;
+    private string $name;
 
     /**
      * The configuration parameters for the SSH host.
      * It stores key-value pairs representing SSH configuration directives.
      */
-    public array $config;
+    private array $config;
 
     public function __construct($name)
     {
@@ -103,9 +103,9 @@ class Host
         return $this->getParameter('RemoteCommand');
     }
 
-    private function isTruthy($value): bool
+    public function getName(): string
     {
-        return in_array($value, ['yes', 'Yes', 'YES', 'true', 'True', 'TRUE', true]);
+        return $this->name;
     }
 
     public function __toString()
@@ -116,5 +116,10 @@ class Host
         }
 
         return $result;
+    }
+
+    private function isTruthy($value): bool
+    {
+        return in_array($value, ['yes', 'Yes', 'YES', 'true', 'True', 'TRUE', true]);
     }
 }

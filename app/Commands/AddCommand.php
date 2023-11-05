@@ -14,6 +14,8 @@ class AddCommand extends Command
 {
     use InteractsWithIO;
 
+    const DEFAULT_PORT = '22';
+
     /**
      * The signature of the command.
      *
@@ -56,10 +58,14 @@ class AddCommand extends Command
 
         $hostParams['Port'] = text(
             label: 'Port:',
-            default: '22',
+            default: self::DEFAULT_PORT,
             required: true,
             validate: fn ($port) => ! is_numeric($port) ? 'Error: The port must be a number.' : null,
         );
+
+        if ($hostParams['Port'] === self::DEFAULT_PORT) {
+            unset($hostParams['Port']);
+        }
 
         $hostParams['User'] = text(
             label: 'User Name:',
