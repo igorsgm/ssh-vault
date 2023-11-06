@@ -36,9 +36,9 @@ class ListCommand extends Command
         $this->step('Hosts');
         $hosts = $sshConfig->hosts();
 
-        $maxNameLength = collect($hosts)->max(fn ($host) => mb_strlen($host->getName()));
+        $maxNameLength = $hosts->max(fn ($host) => mb_strlen($host->getName()));
 
-        $lastIndexLength = mb_strlen((string) count($hosts));
+        $lastIndexLength = mb_strlen((string) $hosts->count());
         foreach ($hosts as $index => $host) {
             $index++;
             $nameLength = $maxNameLength - mb_strlen($host->getName());

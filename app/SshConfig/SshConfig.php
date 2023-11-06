@@ -21,12 +21,12 @@ class SshConfig
     /**
      * Load hosts from the ssh config file.
      */
-    public function load(): Collection
+    public function load(): self
     {
         $configFilePath = $this->configFilePath();
         $this->hosts = File::exists($configFilePath) ? $this->parser->parse($this->content()) : collect();
 
-        return $this->hosts;
+        return $this;
     }
 
     /**

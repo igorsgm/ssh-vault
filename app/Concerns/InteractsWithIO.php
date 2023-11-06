@@ -13,33 +13,6 @@ use function Laravel\Prompts\warning;
 trait InteractsWithIO
 {
     /**
-     * Format input to textual table.
-     *
-     * @param  array  $headers
-     * @param  \Illuminate\Contracts\Support\Arrayable|array  $rows
-     * @param  string  $tableStyle
-     * @return void
-     */
-    public function table($headers, $rows, $tableStyle = 'default', array $columnStyles = [])
-    {
-        $this->line('');
-
-        parent::table(
-            collect($headers)->map(function ($header) {
-                return "   <comment>$header</comment>";
-            })->all(),
-            collect($rows)->map(function ($row) {
-                return collect($row)->map(function ($cell) {
-                    return "   <options=bold>$cell</>";
-                })->all();
-            })->all(),
-            'compact'
-        );
-
-        $this->line('');
-    }
-
-    /**
      * Display a "step" message.
      *
      * @param  string|array  $text

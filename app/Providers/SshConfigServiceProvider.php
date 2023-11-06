@@ -30,10 +30,7 @@ class SshConfigServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton(SshConfig::class, function () {
-            $sshConfig = new SshConfig();
-            $sshConfig->load();
-
-            return $sshConfig;
+            return (new SshConfig())->load();
         });
     }
 }

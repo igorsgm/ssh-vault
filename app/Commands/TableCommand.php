@@ -37,22 +37,11 @@ class TableCommand extends Command
         abort_if($sshConfig->isEmpty(), 1, 'No Hosts. To add new: ssh-vault add');
 
         $this->step('Hosts');
-        $hosts = $sshConfig->hosts();
 
         $columns = ['', 'Host', 'HostName', 'User', 'Port', 'RemoteCommand'];
 
-        $index = 0;
-        $rows = collect($hosts)->map(function (Host $host) use (&$index) {
-            $index++;
-
-            return [
-                'index' => '<fg=gray>'.$index.'</>',
-                'Host' => "<info>{$host->getName()}</info>",
-                'HostName' => "<comment>{$host->hostName()}</comment>",
-                'User' => $host->user(),
-                'Port' => $host->port(),
-                'RemoteCommand' => $host->remoteCommand() ?? '<fg=gray>-</>',
-            ];
+        $rows = $sshConfig->hosts()->map(function (Host $host, $index) {
+            return $this->formatTableRow($host, $index + 1);
         });
 
         // Determine which columns to exclude because they have only null values
@@ -77,5 +66,17 @@ class TableCommand extends Command
         table($filteredHeaders, $filteredRows->toArray());
 
         return 0;
+    }
+
+    public function formatTableRow(Host $host, $index): array
+    {
+        return [
+            'index' => '<fg=gray>'.$index.'</>',
+            'Host' => "<info>{$host->getName()}</info>",
+            'HostName' => "<comment>{$host->hostName()}</comment>",
+            'User' => $host->user(),
+            'Port' => $host->port(),
+            'RemoteCommand' => $host->remoteCommand() ?? '<fg=gray>-</>',
+        ];
     }
 }
