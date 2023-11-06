@@ -8,9 +8,9 @@ parameters:
   level: 5
   checkMissingIterableValueType: false
   checkGenericClassInNonGenericObjectType: false
+  excludePaths:
+    - ./tests/*
 #    ignoreErrors:
 #        - '#PHPDoc tag @var#'
 #
-#    excludePaths:
-#        - ./*/*/FileToBeExcluded.php
 #

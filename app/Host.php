@@ -34,6 +34,16 @@ class Host
     }
 
     /**
+     * Remove parameter from ssh config
+     */
+    public function removeParameter($name): self
+    {
+        unset($this->config[$name]);
+
+        return $this;
+    }
+
+    /**
      * Get parameter from config
      */
     public function getParameter($parameter)
@@ -112,6 +122,7 @@ class Host
     {
         $result = "Host {$this->name}\n";
         foreach ($this->config as $key => $value) {
+            $value = is_bool($value) ? ($value ? 'yes' : 'no') : $value;
             $result .= "  $key $value\n";
         }
 

@@ -10,6 +10,9 @@ use function Laravel\Prompts\error;
 use function Laravel\Prompts\note;
 use function Laravel\Prompts\warning;
 
+/**
+ * @codeCoverageIgnore
+ */
 trait InteractsWithIO
 {
     /**

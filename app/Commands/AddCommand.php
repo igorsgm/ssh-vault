@@ -60,8 +60,7 @@ class AddCommand extends Command
         $hostParams['Port'] = text(
             label: 'Port:',
             default: self::DEFAULT_PORT,
-            required: true,
-            validate: fn ($port) => ! is_numeric($port) ? 'Error: The port must be a number.' : null,
+            validate: fn ($port) => ! empty($port) && ! is_numeric($port) ? 'Error: The port must be a number.' : null,
         );
 
         if ($hostParams['Port'] === self::DEFAULT_PORT) {

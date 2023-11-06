@@ -11,7 +11,9 @@
 |
 */
 
-uses(Tests\TestCase::class)->in('Feature');
+use App\Host;
+
+uses(Tests\TestCase::class)->in(__DIR__);
 
 /*
 |--------------------------------------------------------------------------
@@ -39,7 +41,25 @@ expect()->extend('toBeOne', function () {
 |
 */
 
-function something(): void
+function mockedHost(): Host
 {
-    // ..
+    $name = 'beta'.rand(3, 100);
+    $hostParams = [
+        'HostName' => '123.456.789.103',
+        'User' => 'ubuntu',
+        'Port' => '22',
+        'IdentityFile' => '/home/user/.ssh/id_rsa',
+        'ForwardAgent' => 'yes',
+        'RequestTTY' => 'yes',
+        'RemoteCommand' => 'cd /var/www/'.$name.' exec $SHELL',
+    ];
+
+    $host = new Host($name);
+    foreach ($hostParams as $parameter => $value) {
+        if (! empty($value)) {
+            $host->addParameter($parameter, trim($value));
+        }
+    }
+
+    return $host;
 }
