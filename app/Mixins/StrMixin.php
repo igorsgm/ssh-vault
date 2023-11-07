@@ -14,7 +14,7 @@ class StrMixin
          * @return string
          */
         return function (string $path): string {
-            return str_replace('~', getenv('HOME'), $path);
+            return str_replace('~', home(), $path);
         };
     }
 

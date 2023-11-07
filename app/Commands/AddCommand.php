@@ -6,6 +6,7 @@ use App\Concerns\InteractsWithIO;
 use App\Host;
 use App\SshConfig\SshConfig;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 use LaravelZero\Framework\Commands\Command;
 
 use function Laravel\Prompts\confirm;
@@ -77,7 +78,7 @@ class AddCommand extends Command
             label: 'Identity File Location:',
             default: $lastHost ? $lastHost->identityFile() : '',
             validate: function ($path) {
-                $path = str_replace('~', getenv('HOME'), $path);
+                $path = Str::expandedPath($path);
 
                 return ! empty($path) && ! File::exists($path) ? "Error: file not found at $path" : null;
             },
