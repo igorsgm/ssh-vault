@@ -3,7 +3,6 @@
 namespace App\Concerns;
 
 use LaravelZero\Framework\Components\Logo\FigletString;
-use Symfony\Component\Console\Question\ChoiceQuestion;
 
 use function Laravel\Prompts\confirm;
 use function Laravel\Prompts\error;
@@ -17,11 +16,8 @@ trait InteractsWithIO
 {
     /**
      * Display a "step" message.
-     *
-     * @param  string|array  $text
-     * @return void
      */
-    public function step($text)
+    public function step(string $text): void
     {
         $text = '<fg=blue>»»»</> <options=bold>'.$this->formatStepText($text).'</>';
 
@@ -30,11 +26,8 @@ trait InteractsWithIO
 
     /**
      * Display a successful "step" message.
-     *
-     * @param  string|array  $text
-     * @return void
      */
-    public function successfulStep($text)
+    public function successfulStep(string $text): void
     {
         $text = '<fg=green>»»»</> <options=bold><info>✔ </info>'.$this->formatStepText($text).'</>';
 
@@ -43,11 +36,8 @@ trait InteractsWithIO
 
     /**
      * Display a warn "step" message.
-     *
-     * @param  string|array  $text
-     * @return void
      */
-    public function warnStep($text)
+    public function warnStep(string $text): void
     {
         $text = '<fg=yellow>»»»</> <options=bold><comment>⚠️</comment> '.$this->formatStepText($text).'</>';
 
@@ -55,53 +45,11 @@ trait InteractsWithIO
     }
 
     /**
-     * Display a ask "step" message.
-     *
-     * @param  string|array  $question
-     * @param  string|null  $default
-     * @return mixed
-     */
-    public function askStep($question, $default = null)
-    {
-        $question = $this->formatStepText($question);
-
-        return $this->ask('<fg=yellow>»»</> <options=bold>'.$question.'</>', $default);
-    }
-
-    /**
-     * Display a confirm "step" message.
-     *
-     * @param  string|array  $question
-     * @param  bool  $default
-     * @return bool
-     */
-    public function confirmStep($question, $default = false)
-    {
-        $question = $this->formatStepText($question);
-
-        return $this->output->confirm('<fg=yellow>»»</> <options=bold>'.$question.'</>', $default);
-    }
-
-    /**
-     * Display a secret "step" message.
-     *
-     * @param  array|string  $question
-     * @return mixed
-     */
-    public function secretStep($question)
-    {
-        $question = $this->formatStepText($question);
-
-        return $this->secret('<fg=yellow>»»</> <options=bold>'.$question.'</>');
-    }
-
-    /**
      * Formats a text step.
      *
      * @param  string|array  $text
-     * @return string
      */
-    protected function formatStepText($text)
+    protected function formatStepText($text): string
     {
         $parameters = [];
 
@@ -158,32 +106,6 @@ trait InteractsWithIO
     {
         $figlet = new FigletString($text, array_merge(config('logo'), $options));
         $this->info(trim((string) $figlet, "\n"));
-    }
-
-    /**
-     * Display a ask "step" message.
-     *
-     * @param  string|array  $question
-     * @param  array  $choices
-     * @param  string|null  $default
-     * @return int
-     */
-    public function choiceStep($question, $choices, $default = null)
-    {
-        $question = $this->formatStepText($question);
-
-        $question = new class('<fg=yellow>»»</> <options=bold>'.$question.'</>', $choices, $default) extends ChoiceQuestion
-        {
-            /**
-             * Determines if the given array is associative.
-             */
-            public function isAssoc(array $array): bool
-            {
-                return true;
-            }
-        };
-
-        return (int) $this->output->askQuestion($question);
     }
 
     /**
