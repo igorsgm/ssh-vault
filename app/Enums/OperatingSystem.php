@@ -2,6 +2,7 @@
 
 namespace App\Enums;
 
+// @codeCoverageIgnoreStart
 enum OperatingSystem: string
 {
     case MACOS = 'Darwin';
@@ -52,3 +53,4 @@ enum OperatingSystem: string
         return $this->isLinux() || $this->isMacOS();
     }
 }
+// @codeCoverageIgnoreEnd

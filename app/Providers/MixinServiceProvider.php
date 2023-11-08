@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
+use App\Mixins\StringableMixin;
 use App\Mixins\StrMixin;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
+use Illuminate\Support\Stringable;
 
 class MixinServiceProvider extends ServiceProvider
 {
@@ -16,6 +18,7 @@ class MixinServiceProvider extends ServiceProvider
     public function register()
     {
         Str::mixin(new StrMixin());
+        Stringable::mixin(new StringableMixin());
     }
 
     /**

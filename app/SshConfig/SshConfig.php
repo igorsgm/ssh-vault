@@ -5,6 +5,7 @@ namespace App\SshConfig;
 use App\Host;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 
 class SshConfig
 {
@@ -100,8 +101,10 @@ class SshConfig
      */
     private function configFilePath(): string
     {
-        $path = rtrim(config('app.ssh-config-path'), '/');
-
-        return str_replace('~', getenv('HOME'), $path);
+        return Str::of(config('app.ssh-config-path'))
+            ->rtrim('/')
+            ->expandedPath()
+            ->toDirectorySeparator()
+            ->toString();
     }
 }
