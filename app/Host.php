@@ -2,6 +2,9 @@
 
 namespace App;
 
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
+
 /**
  * Ssh Host representation
  */
@@ -26,9 +29,9 @@ class Host
     /**
      * Add new parameter to ssh config
      */
-    public function addParameter($name, $value): self
+    public function addParameter($parameter, $value): self
     {
-        $this->config[$name] = $value;
+        $this->config[strtolower($parameter)] = Str::unquote($value);
 
         return $this;
     }
@@ -36,9 +39,9 @@ class Host
     /**
      * Remove parameter from ssh config
      */
-    public function removeParameter($name): self
+    public function removeParameter($parameter): self
     {
-        unset($this->config[$name]);
+        $this->config = Arr::except($this->config, [$parameter, strtolower($parameter)]);
 
         return $this;
     }
@@ -48,7 +51,7 @@ class Host
      */
     public function getParameter($parameter)
     {
-        return $this->config[$parameter] ?? null;
+        return $this->config[$parameter] ?? ($this->config[strtolower($parameter)] ?? null);
     }
 
     /**
@@ -56,7 +59,7 @@ class Host
      */
     public function hostName()
     {
-        return $this->getParameter('HostName');
+        return $this->getParameter('hostname');
     }
 
     /**
@@ -64,7 +67,7 @@ class Host
      */
     public function port()
     {
-        return $this->getParameter('Port');
+        return $this->getParameter('port');
     }
 
     /**
@@ -72,7 +75,7 @@ class Host
      */
     public function user()
     {
-        return $this->getParameter('User');
+        return $this->getParameter('user');
     }
 
     /**
@@ -80,7 +83,7 @@ class Host
      */
     public function identityFile()
     {
-        return $this->getParameter('IdentityFile');
+        return $this->getParameter('identityfile');
     }
 
     /**
@@ -88,9 +91,9 @@ class Host
      */
     public function forwardAgent(): bool
     {
-        $forwardAgent = $this->getParameter('ForwardAgent');
+        $forwardAgent = $this->getParameter('forwardagent');
 
-        return $this->isTruthy($forwardAgent);
+        return Str::isTruthy($forwardAgent);
     }
 
     /**
@@ -98,9 +101,9 @@ class Host
      */
     public function requestTTY(): bool
     {
-        $requestTTY = $this->getParameter('RequestTTY');
+        $requestTTY = $this->getParameter('requesttty');
 
-        return $this->isTruthy($requestTTY);
+        return Str::isTruthy($requestTTY);
     }
 
     /**
@@ -110,7 +113,7 @@ class Host
      */
     public function remoteCommand(): ?string
     {
-        return $this->getParameter('RemoteCommand');
+        return $this->getParameter('remotecommand');
     }
 
     public function getName(): string
@@ -127,10 +130,5 @@ class Host
         }
 
         return $result;
-    }
-
-    private function isTruthy($value): bool
-    {
-        return in_array($value, ['yes', 'Yes', 'YES', 'true', 'True', 'TRUE', true]);
     }
 }

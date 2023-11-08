@@ -1,5 +1,6 @@
 <?php
 
+// @codeCoverageIgnoreStart
 use App\Enums\OperatingSystem;
 
 if (! function_exists('user')) {
@@ -53,3 +54,5 @@ if (! function_exists('app_bin')) {
         return data_get($composerContent, 'bin.0');
     }
 }
+
+// @codeCoverageIgnoreEnd

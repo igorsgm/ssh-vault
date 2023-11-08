@@ -3,6 +3,7 @@
 namespace App\Mixins;
 
 use Closure;
+use Illuminate\Support\Str;
 
 /** @mixin \Illuminate\Support\Str */
 class StrMixin
@@ -30,6 +31,30 @@ class StrMixin
          */
         return function (string $path): string {
             return str_replace(['/', '\\'], DIRECTORY_SEPARATOR, $path);
+        };
+    }
+
+    /**
+     * Determine if the given value is truthy.
+     */
+    public function isTruthy(): Closure
+    {
+        return function (string|bool $value): bool {
+            return in_array(strtolower($value), ['yes', 'true'], true) || filter_var($value, FILTER_VALIDATE_BOOLEAN);
+        };
+    }
+
+    /**
+     * Unquote an optionally double-quoted string.
+     */
+    public function unquote(): Closure
+    {
+        return function (?string $string): ?string {
+            if (Str::startsWith($string, '"') && Str::endsWith($string, '"')) {
+                return substr($string, 1, -1);
+            }
+
+            return $string;
         };
     }
 }

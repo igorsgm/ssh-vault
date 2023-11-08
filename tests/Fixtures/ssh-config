@@ -8,10 +8,19 @@ Host beta1
   RemoteCommand cd beta1; exec $SHELL
 
 Host beta2
-  HostName 123.456.789.102
+  HostName "123.456.789.102"
   Port 22
   User ubuntu
   IdentityFile /home/user/.ssh/id_rsa
   ForwardAgent yes
   RequestTTY yes
   RemoteCommand cd beta2; exec $SHELL
+
+Host beta3
+  HostName=123.456.789.103
+  Port=22
+  User=ubuntu
+  IdentityFile="/home/user/.ssh/id_rsa"
+  ForwardAgent=yes
+  RequestTTY=yes
+  RemoteCommand="cd beta3; exec $SHELL"

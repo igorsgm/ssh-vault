@@ -9,13 +9,10 @@ use Illuminate\Support\Str;
 
 class SshConfig
 {
-    private SshConfigParser $parser;
-
     private Collection $hosts;
 
     public function __construct()
     {
-        $this->parser = new SshConfigParser();
         $this->hosts = collect();
     }
 
@@ -25,7 +22,7 @@ class SshConfig
     public function load(): self
     {
         $configFilePath = $this->configFilePath();
-        $this->hosts = File::exists($configFilePath) ? $this->parser->parse($this->content()) : collect();
+        $this->hosts = File::exists($configFilePath) ? SshConfigParser::parse($configFilePath) : collect();
 
         return $this;
     }
