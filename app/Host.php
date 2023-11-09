@@ -107,13 +107,21 @@ class Host
     }
 
     /**
-     * Get RemoteCommand parameter from config
+     * Get the remote command to execute.
      *
-     * @return string|null The RemoteCommand parameter value or null if not set
+     * @param  bool  $addBash Whether to add "bash -se" at the end of the remote command.
      */
-    public function remoteCommand(): ?string
+    public function remoteCommand(bool $addBash = false): ?string
     {
-        return $this->getParameter('remotecommand');
+        $remoteCommand = $this->getParameter('remotecommand');
+        $remoteCommand = Str::of($remoteCommand ?? '')->unquote()->trim()->toString() ?: null;
+
+        if ($addBash) {
+            $bashCommand = 'bash -se';
+            $remoteCommand = $remoteCommand ? "$remoteCommand && $bashCommand" : "$bashCommand";
+        }
+
+        return $remoteCommand;
     }
 
     public function getName(): string
@@ -130,5 +138,24 @@ class Host
         }
 
         return $result;
+    }
+
+    /**
+     * Convert the SSH connection information to a SSH command string.
+     *
+     * @param  bool  $addBash Whether to add the remote command wrapped in a Bash shell (default: true)
+     */
+    public function toSshCommandString(bool $addBash = true): string
+    {
+        $command = [
+            "ssh {$this->user()}@{$this->hostName()}",
+            $this->port() ? "-p {$this->port()}" : null,
+            $this->identityFile() ? "-i {$this->identityFile()}" : null,
+            $this->forwardAgent() ? '-A' : null,
+            $this->requestTTY() ? '-tt' : null,
+            $this->remoteCommand($addBash) ? " '{$this->remoteCommand($addBash)}'" : null,
+        ];
+
+        return implode(' ', array_filter($command));
     }
 }

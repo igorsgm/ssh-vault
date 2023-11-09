@@ -23,8 +23,17 @@ class StringableMixin
          * Apply the toDirectorySeparator method from StrMixin to the string.
          */
         return function (): static {
-            // Assuming StrMixin has been already mixed into the Str facade
             return new static(Str::toDirectorySeparator($this->value));
+        };
+    }
+
+    public function unquote(): \Closure
+    {
+        /**
+         * Apply the unquote method from StrMixin to the string.
+         */
+        return function (): static {
+            return new static(Str::unquote($this->value));
         };
     }
 }

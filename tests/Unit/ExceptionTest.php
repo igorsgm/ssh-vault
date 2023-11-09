@@ -1,5 +1,6 @@
 <?php
 
+use App\Commands\ConnectCommand;
 use App\Commands\ListCommand;
 use App\Commands\RawCommand;
 use App\Commands\RemoveCommand;
@@ -22,4 +23,5 @@ it('displays exception message when there are no hosts available', function ($co
     RawCommand::class,
     RemoveCommand::class,
     TableCommand::class,
+    ConnectCommand::class,
 ]);
