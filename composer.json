@@ -1,18 +1,18 @@
 {
-    "name": "laravel-zero/laravel-zero",
-    "description": "The Laravel Zero Framework.",
-    "keywords": ["framework", "laravel", "laravel zero", "console", "cli"],
-    "homepage": "https://laravel-zero.com",
+    "name": "igorsgm/ssh-vault",
+    "description": "🗝️ • Lightweight utility for easy SSH management. Add, list, access and remove connections with simple commands, keeping your SSH config organized.",
+    "keywords": ["ssh", "laravel", "connection", "console", "cli"],
+    "homepage": "https://github.com/igorsgm/ssh-vault",
     "type": "project",
     "license": "MIT",
     "support": {
-        "issues": "https://github.com/laravel-zero/laravel-zero/issues",
-        "source": "https://github.com/laravel-zero/laravel-zero"
+        "issues": "https://github.com/igorsgm/ssh-vault/issues",
+        "source": "https://github.com/igorsgm/ssh-vault"
     },
     "authors": [
         {
-            "name": "Nuno Maduro",
-            "email": "enunomaduro@gmail.com"
+            "name": "Igor Moraes",
+            "email": "igor.sgm@gmail.com"
         }
     ],
     "require": {
