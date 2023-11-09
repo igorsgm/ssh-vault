@@ -1,7 +1,16 @@
 {
     "name": "igorsgm/ssh-vault",
     "description": "🗝️ • Lightweight utility for easy SSH management. Add, list, access and remove connections with simple commands, keeping your SSH config organized.",
-    "keywords": ["ssh", "laravel", "connection", "console", "cli"],
+    "keywords": [
+        "ssh",
+        "ssh-client",
+        "ssh-server",
+        "laravel",
+        "laravel-zero",
+        "connection",
+        "console",
+        "cli"
+    ],
     "homepage": "https://github.com/igorsgm/ssh-vault",
     "type": "project",
     "license": "MIT",
