@@ -2,8 +2,8 @@
 
 namespace App\Commands;
 
+use App\Concerns\CommandHelper;
 use App\Concerns\InteractsWithIO;
-use App\Host;
 use App\SshConfig\SshConfig;
 use LaravelZero\Framework\Commands\Command;
 
@@ -11,6 +11,7 @@ use function Laravel\Prompts\multiselect;
 
 class RemoveCommand extends Command
 {
+    use CommandHelper;
     use InteractsWithIO;
 
     /**
@@ -34,11 +35,11 @@ class RemoveCommand extends Command
      */
     public function handle(SshConfig $sshConfig)
     {
-        abort_if($sshConfig->isEmpty(), 1, 'No Hosts. To add new: ssh-vault add');
+        $this->ensureSshConfigFile();
 
         $hostsToRemove = multiselect(
             label: 'Select hosts to remove:',
-            options: $sshConfig->hosts()->map(fn (Host $host) => $host->getName())->toArray(),
+            options: $this->hostsSelectOptions(),
             scroll: 30,
             required: true,
         );
@@ -51,6 +52,6 @@ class RemoveCommand extends Command
 
         $this->successfulStep('Removed: <comment>'.implode(', ', $hostsToRemove).'</comment> successfully.');
 
-        return 0;
+        return Command::SUCCESS;
     }
 }

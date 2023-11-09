@@ -2,6 +2,7 @@
 
 namespace App\Commands;
 
+use App\Concerns\CommandHelper;
 use App\Concerns\InteractsWithIO;
 use App\Host;
 use App\SshConfig\SshConfig;
@@ -11,6 +12,7 @@ use function Laravel\Prompts\table;
 
 class TableCommand extends Command
 {
+    use CommandHelper;
     use InteractsWithIO;
 
     /**
@@ -34,8 +36,7 @@ class TableCommand extends Command
      */
     public function handle(SshConfig $sshConfig)
     {
-        abort_if($sshConfig->isEmpty(), 1, 'No Hosts. To add new: ssh-vault add');
-
+        $this->ensureSshConfigFile();
         $this->step('Hosts');
 
         $columns = ['', 'Host', 'HostName', 'User', 'Port', 'RemoteCommand'];
@@ -65,7 +66,7 @@ class TableCommand extends Command
         // Output the table with filtered columns and rows
         table($filteredHeaders, $filteredRows->toArray());
 
-        return 0;
+        return Command::SUCCESS;
     }
 
     public function formatTableRow(Host $host, $index): array

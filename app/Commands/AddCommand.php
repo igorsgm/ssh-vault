@@ -113,6 +113,6 @@ class AddCommand extends Command
         $this->successfulStep("<comment>$name</comment> SSH connection added successfully");
         $this->hintStep("You should now be able to connect to the server via: ssh $name");
 
-        return 0;
+        return Command::SUCCESS;
     }
 }

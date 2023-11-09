@@ -56,7 +56,9 @@ class SshConfig
      */
     public function remove(string $name): self
     {
-        $this->hosts = $this->hosts->reject(fn (Host $host) => $host->getName() === $name);
+        $this->hosts = $this->hosts->reject(
+            fn (Host $host) => $host->getName() === $name || $host->hostName() === $name
+        );
 
         return $this;
     }

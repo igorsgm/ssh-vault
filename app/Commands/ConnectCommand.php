@@ -2,6 +2,7 @@
 
 namespace App\Commands;
 
+use App\Concerns\CommandHelper;
 use App\Concerns\InteractsWithIO;
 use App\Host;
 use App\SshConfig\SshConfig;
@@ -13,6 +14,7 @@ use function Laravel\Prompts\select;
 
 class ConnectCommand extends Command
 {
+    use CommandHelper;
     use InteractsWithIO;
 
     /**
@@ -36,18 +38,14 @@ class ConnectCommand extends Command
      */
     public function handle(SshConfig $sshConfig)
     {
-        abort_if($sshConfig->isEmpty(), 1, 'No Hosts. To add new: ssh-vault add');
+        $this->ensureSshConfigFile();
 
         $hostOrHostName = $this->getArgument('hostOrHostName');
 
         if (! $hostOrHostName) {
             $hostOrHostName = select(
                 label: 'Select host to connect:',
-                options: $sshConfig->hosts()->mapWithKeys(function (Host $host) {
-                    return [
-                        $host->getName() => "{$host->getName()} <fg=gray>({$host->hostName()})</>",
-                    ];
-                })->toArray(),
+                options: $this->hostsSelectOptions(),
                 scroll: 30,
             );
         }

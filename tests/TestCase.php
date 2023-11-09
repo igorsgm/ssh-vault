@@ -2,6 +2,7 @@
 
 namespace Tests;
 
+use App\Concerns\CommandHelper;
 use App\SshConfig\SshConfig;
 use Illuminate\Support\Facades\File;
 use Laravel\Prompts\Prompt;
@@ -10,7 +11,8 @@ use Tests\Traits\WithTmpFiles;
 
 abstract class TestCase extends BaseTestCase
 {
-    use CreatesApplication,
+    use CommandHelper,
+        CreatesApplication,
         WithTmpFiles;
 
     public SshConfig $sshConfig;

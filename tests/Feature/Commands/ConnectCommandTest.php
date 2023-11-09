@@ -23,11 +23,7 @@ it('prompts for selection when the hostOrHostName parameter is not defined', fun
     $this->sshConfig->add($mockedHost)->sync();
 
     // Prepare a list of hosts as it would appear in the command prompt.
-    $options = $this->sshConfig->hosts()->mapWithKeys(function (Host $host) {
-        return [
-            $host->getName() => "{$host->getName()} <fg=gray>({$host->hostName()})</>",
-        ];
-    })->toArray();
+    $options = $this->hostsSelectOptions();
 
     // Prepare the expected choices due to Laravel Prompts Fallback
     $optionsWithFallback = [...array_keys($options), ...$options];

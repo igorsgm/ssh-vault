@@ -7,7 +7,8 @@ it('removes selected SSH connections', function () {
     $hosts = $this->sshConfig->hosts();
     $nameToRemove = $hosts->first()->getName();
 
-    $options = $hosts->map(fn (Host $host) => $host->getName())->toArray();
+    $options = $this->hostsSelectOptions();
+
     // Prepare the expected choices, including 'None' and index numbers due to Laravel Prompts Fallback
     $optionsWithFallback = ['', ...array_keys($options), 'None', ...$options];
 

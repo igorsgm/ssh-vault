@@ -2,12 +2,14 @@
 
 namespace App\Commands;
 
+use App\Concerns\CommandHelper;
 use App\Concerns\InteractsWithIO;
 use App\SshConfig\SshConfig;
 use LaravelZero\Framework\Commands\Command;
 
 class RawCommand extends Command
 {
+    use CommandHelper;
     use InteractsWithIO;
 
     /**
@@ -31,10 +33,10 @@ class RawCommand extends Command
      */
     public function handle(SshConfig $sshConfig)
     {
-        abort_if($sshConfig->isEmpty(), 1, 'No Hosts. To add new: ssh-vault add');
+        $this->ensureSshConfigFile();
 
         $this->line($sshConfig->content());
 
-        return 0;
+        return Command::SUCCESS;
     }
 }
