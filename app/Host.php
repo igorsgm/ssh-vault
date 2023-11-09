@@ -97,6 +97,16 @@ class Host
     }
 
     /**
+     * Determine if the AddKeysToAgent parameter is truthy.
+     */
+    public function addKeysToAgent(): bool
+    {
+        $forwardAgent = $this->getParameter('addkeystoagent');
+
+        return Str::isTruthy($forwardAgent);
+    }
+
+    /**
      * Determine if the RequestTTY parameter is truthy.
      */
     public function requestTTY(): bool
@@ -152,6 +162,7 @@ class Host
             $this->port() ? "-p {$this->port()}" : null,
             $this->identityFile() ? "-i {$this->identityFile()}" : null,
             $this->forwardAgent() ? '-A' : null,
+            $this->addKeysToAgent() ? '-o AddKeysToAgent=yes' : null,
             $this->requestTTY() ? '-tt' : null,
             $this->remoteCommand($addBash) ? " '{$this->remoteCommand($addBash)}'" : null,
         ];

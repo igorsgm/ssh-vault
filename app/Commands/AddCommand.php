@@ -87,12 +87,17 @@ class AddCommand extends Command
 
         $hostParams['ForwardAgent'] = confirm(
             label: 'Forward Agent:',
-            default: $lastHost ? $lastHost->forwardAgent() : true,
+            default: ! $lastHost || $lastHost->forwardAgent(),
+        ) ? 'yes' : 'no';
+
+        $hostParams['AddKeysToAgent'] = confirm(
+            label: 'Add Keys To Agent:',
+            default: ! $lastHost || $lastHost->addKeysToAgent(),
         ) ? 'yes' : 'no';
 
         $hostParams['RequestTTY'] = confirm(
             label: 'Request TTY:',
-            default: $lastHost ? $lastHost->requestTTY() : true,
+            default: ! $lastHost || $lastHost->requestTTY(),
         ) ? 'yes' : 'no';
 
         $hostParams['RemoteCommand'] = text(

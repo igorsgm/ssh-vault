@@ -50,6 +50,7 @@ function mockedHost(): Host
         'Port' => '22',
         'IdentityFile' => '/home/user/.ssh/id_rsa',
         'ForwardAgent' => 'yes',
+        'AddKeysToAgent' => 'yes',
         'RequestTTY' => 'yes',
         'RemoteCommand' => 'cd /var/www/'.$name.' exec $SHELL',
     ];

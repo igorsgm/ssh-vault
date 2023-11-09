@@ -4,6 +4,7 @@ Host beta1
   User ubuntu
   IdentityFile /home/user/.ssh/id_rsa
   ForwardAgent yes
+  AddKeysToAgent yes
   RequestTTY yes
   RemoteCommand cd beta1; exec $SHELL
 
@@ -13,6 +14,7 @@ Host beta2
   User ubuntu
   IdentityFile /home/user/.ssh/id_rsa
   ForwardAgent yes
+  AddKeysToAgent no
   RequestTTY yes
   RemoteCommand cd beta2; exec $SHELL
 
@@ -21,6 +23,7 @@ Host beta3
   Port=22
   User=ubuntu
   IdentityFile="/home/user/.ssh/id_rsa"
+  AddKeysToAgent=yes
   ForwardAgent=yes
   RequestTTY=yes
   RemoteCommand="cd beta3; exec $SHELL"

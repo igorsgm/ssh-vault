@@ -20,6 +20,7 @@ it('adds a new SSH connection', function () {
         ->expectsQuestion('User Name:', $mockedHost->user())
         ->expectsQuestion('Identity File Location:', $mockedHost->identityFile())
         ->expectsConfirmation('Forward Agent:', $mockedHost->forwardAgent() ? 'yes' : 'no')
+        ->expectsConfirmation('Add Keys To Agent:', $mockedHost->addKeysToAgent() ? 'yes' : 'no')
         ->expectsConfirmation('Request TTY:', $mockedHost->requestTTY() ? 'yes' : 'no')
         ->expectsQuestion('Remote Command:', $mockedHost->remoteCommand())
         ->assertExitCode(0);

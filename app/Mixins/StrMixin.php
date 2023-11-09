@@ -39,7 +39,7 @@ class StrMixin
      */
     public function isTruthy(): Closure
     {
-        return function (string|bool $value): bool {
+        return function (mixed $value): bool {
             return in_array(strtolower($value), ['yes', 'true'], true) || filter_var($value, FILTER_VALIDATE_BOOLEAN);
         };
     }
