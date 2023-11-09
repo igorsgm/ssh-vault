@@ -1,7 +1,6 @@
 <?php
 
 use App\Commands\RemoveCommand;
-use App\Host;
 
 it('removes selected SSH connections', function () {
     $hosts = $this->sshConfig->hosts();

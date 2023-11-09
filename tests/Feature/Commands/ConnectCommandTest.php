@@ -1,7 +1,6 @@
 <?php
 
 use App\Commands\ConnectCommand;
-use App\Host;
 use Illuminate\Support\Facades\Process;
 
 it('connects to an SSH host', function () {
