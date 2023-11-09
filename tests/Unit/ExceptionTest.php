@@ -15,7 +15,7 @@ it('displays exception message when there are no hosts available', function ($co
     $this->sshConfig = app(SshConfig::class);
     $this->sshConfig->load();
 
-    $this->expectExceptionMessage('No Hosts. To add new: ssh-vault add');
+    $this->expectExceptionMessage(sprintf('No Hosts. To add new: %s add', app_bin()));
 
     $this->artisan($command);
 })->with([

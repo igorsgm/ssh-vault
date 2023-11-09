@@ -221,5 +221,5 @@ return [
     | of artisan.php.
     |
     */
-    'artisan_path' => base_path('ssh-vault'),
+    'artisan_path' => base_path(app_bin()),
 ];

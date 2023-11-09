@@ -13,7 +13,7 @@ trait CommandHelper
     public function ensureSshConfigFile(): void
     {
         $sshConfig = app(SshConfig::class);
-        abort_if($sshConfig->isEmpty(), 1, 'No Hosts. To add new: ssh-vault add');
+        abort_if($sshConfig->isEmpty(), 1, sprintf('No Hosts. To add new: %s add', app_bin()));
     }
 
     /**
