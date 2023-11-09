@@ -2,12 +2,13 @@
 
 namespace App\Mixins;
 
+use Closure;
 use Illuminate\Support\Str;
 
 /** @mixin \Illuminate\Support\Stringable */
 class StringableMixin
 {
-    public function expandedPath(): \Closure
+    public function expandedPath(): Closure
     {
         /**
          * Apply the expandedPath method from StrMixin to the string.
@@ -17,7 +18,7 @@ class StringableMixin
         };
     }
 
-    public function toDirectorySeparator(): \Closure
+    public function toDirectorySeparator(): Closure
     {
         /**
          * Apply the toDirectorySeparator method from StrMixin to the string.
@@ -27,7 +28,7 @@ class StringableMixin
         };
     }
 
-    public function unquote(): \Closure
+    public function unquote(): Closure
     {
         /**
          * Apply the unquote method from StrMixin to the string.
