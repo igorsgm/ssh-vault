@@ -30,11 +30,12 @@ class AppServiceProvider extends ServiceProvider
      */
     private function registerGitHooks(): void
     {
-        if (config('app.env') === 'production') {
+        $gitHooksServiceProvider = \Igorsgm\GitHooks\GitHooksServiceProvider::class;
+        if (config('app.env') === 'production' || ! class_exists($gitHooksServiceProvider)) {
             return;
         }
 
-        $this->app->register(\Igorsgm\GitHooks\GitHooksServiceProvider::class);
+        $this->app->register($gitHooksServiceProvider);
 
         $hiddenCommands = config('commands.hidden', []);
 
