@@ -63,13 +63,6 @@ return [
         Illuminate\Console\Scheduling\ScheduleFinishCommand::class,
         Illuminate\Foundation\Console\VendorPublishCommand::class,
         LaravelZero\Framework\Commands\StubPublishCommand::class,
-        \Igorsgm\GitHooks\Console\Commands\RegisterHooks::class,
-        \Igorsgm\GitHooks\Console\Commands\PreCommit::class,
-        \Igorsgm\GitHooks\Console\Commands\PostCommit::class,
-        \Igorsgm\GitHooks\Console\Commands\CommitMessage::class,
-        \Igorsgm\GitHooks\Console\Commands\MakeHook::class,
-        \Igorsgm\GitHooks\Console\Commands\PrePush::class,
-        \Igorsgm\GitHooks\Console\Commands\PrepareCommitMessage::class,
     ],
 
     /*

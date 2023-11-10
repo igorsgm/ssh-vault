@@ -68,7 +68,6 @@ return [
 
     'providers' => [
         App\Providers\AppServiceProvider::class,
-        \Igorsgm\GitHooks\GitHooksServiceProvider::class,
         \App\Providers\SshConfigServiceProvider::class,
         \App\Providers\MixinServiceProvider::class,
     ],
