@@ -19,7 +19,7 @@
 <hr/>
 
 <p align="center">
-    <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/14129843/282014261-1f0f6c47-8b40-441e-9a80-99379bf921cc.png" alt="SSH Vault usage sample">
+    <img src="https://raw.githubusercontent.com/igorsgm/ssh-vault/master/storage/images/ssh-vault-available-commands.png" alt="SSH Vault usage sample with available commands">
 </p>
 
 ## ✨ Features
@@ -28,6 +28,7 @@
 - **List Hosts:** View SSH/config file contents in various formats.
 - **Add New Host:** Simplify adding new SSH connections.
 - **Remove Host:** Keep your SSH config file clean by removing connections.
+- **Add Connection:** Effortlessly establish new SSH connections, enhancing your SSH management workflow.
 
 ## 1️⃣ Installation
 
@@ -49,7 +50,7 @@ Comprehensive table layout for SSH connection details.
 ssh-vault hosts:table
 ```
 <p align="center">
-    <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/14129843/282016032-ced85b9d-de9d-4bba-a263-98b94fda9cf2.png" alt="SSH Vault hosts list and table">
+    <img src="https://raw.githubusercontent.com/igorsgm/ssh-vault/master/storage/images/ssh-table.png" alt="SSH Vault hosts list and table">
 </p>
 
 
@@ -59,7 +60,7 @@ Unfiltered view of SSH configurations for in-depth review.
 ssh-vault hosts:raw
 ```
 <p align="center">
-    <img src="https://github.com/laravel-zero/laravel-zero/assets/14129843/52860542-95dd-411c-a268-88aaba56b574" alt="SSH Vault raw ssh config">
+    <img src="https://raw.githubusercontent.com/igorsgm/ssh-vault/master/storage/images/ssh-vault-raw.png" alt="SSH Vault raw ssh config">
 </p>
 
 ### 🔗 Add a new SSH connection to your config file
@@ -68,7 +69,7 @@ Interactive inputs for quick SSH connection setup.
 ssh-vault hosts:add
 ```
 <p align="center">
-    <img src="https://github.com/laravel-zero/laravel-zero/assets/14129843/b7f75c82-f215-4971-bcd4-b0f748d186b1" alt="SSH Vault raw ssh config">
+    <img src="https://raw.githubusercontent.com/igorsgm/ssh-vault/master/storage/images/ssh-add.png" alt="SSH Vault add new connection">
 </p>
 
 ### 🚮 Remove SSH connection from config file
@@ -83,7 +84,7 @@ Streamlined SSH connection to chosen hosts with detailed options.
 ssh-vault hosts:connect
 ```
 <p align="center">
-    <img src="https://github.com/laravel-zero/laravel-zero/assets/14129843/d5d86036-96a5-4864-a59d-aacf7e1cc816" alt="SSH Vault raw ssh config">
+    <img src="https://raw.githubusercontent.com/igorsgm/ssh-vault/master/storage/images/ssh-connect.png" alt="SSH Vault remove and connect hosts">
 </p>
 <hr/>
 
