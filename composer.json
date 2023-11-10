@@ -53,6 +53,10 @@
             "Tests\\": "tests/"
         }
     },
+    "scripts": {
+        "test": "./vendor/bin/pest",
+        "test-coverage": "XDEBUG_MODE=coverage ./vendor/bin/pest --coverage"
+    },
     "config": {
         "preferred-install": "dist",
         "sort-packages": true,

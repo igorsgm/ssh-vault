@@ -1,6 +1,6 @@
 <h1 align="center">🗝️ SSH Vault</h1>
 
-<p align="center">A lightweight utility for easy SSH management. Add, list, access and remove connections with simple commands, keeping your SSH config organized. That's it. No more bash aliases, shell history, txt notes or whatever people usually do to store server details.</p>
+<p align="center">Manage SSH connections effortlessly with SSH Vault, a lightweight user-friendly tool for adding, listing, accessing, and removing SSH connections. Replace cumbersome bash aliases and notes with this efficient utility for organized SSH config management.</p>
 
 <p align="center">
     <a href="https://packagist.org/packages/igorsgm/ssh-vault">
@@ -24,10 +24,10 @@
 
 ## ✨ Features
 > It just parses and modifies `~/.ssh/config` file. You can continue to use tools that you like and just use this wrapper to add or remove connections from your ssh config file.
-> 
-- **List hosts:** View the contents of the ssh/config file in list, table or raw format
-- **Add new host:** Easily add new SSH connection
-- **Remove host:** Remove SSH connection from
+
+- **List Hosts:** View SSH/config file contents in various formats.
+- **Add New Host:** Simplify adding new SSH connections.
+- **Remove Host:** Keep your SSH config file clean by removing connections.
 
 ## 1️⃣ Installation
 
@@ -38,46 +38,54 @@ composer global require igorsgm/ssh-vault
 
 ## 2️⃣ Usage
 ### 📋 Display all SSH connections in a list format:
-> ssh-vault hosts:list
-
-Conveniently lists all your SSH connections in an organized, list format. This command is perfect for a quick overview of your SSH hosts, displaying names and hostnames in an easy-to-read manner.
+Detailed list format for easy SSH host overview.
+```bash
+ssh-vault hosts:list
+```
 
 ### 🧮 Display all SSH connections in a table format:
-> ssh-vault hosts:table
-
-Effortlessly view all SSH connections in a detailed table format. This command provides a comprehensive layout, showcasing host names, host addresses, user names, ports, and remote commands, if any. Ideal for a clear and structured overview of your SSH configurations.
+Comprehensive table layout for SSH connection details.
+```bash
+ssh-vault hosts:table
+```
 <p align="center">
     <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/14129843/282016032-ced85b9d-de9d-4bba-a263-98b94fda9cf2.png" alt="SSH Vault hosts list and table">
 </p>
 
-### 📄 Display all SSH connections in a raw format:
-> ssh-vault hosts:raw
 
-This command offers a straightforward way to view all your SSH connections in their raw format. Ideal for those who prefer to see the complete, unfiltered details of their SSH configuration for review or troubleshooting purposes. Simple and handy.
+### 📄 Display all SSH connections in a raw format:
+Unfiltered view of SSH configurations for in-depth review.
+```bash
+ssh-vault hosts:raw
+```
 <p align="center">
     <img src="https://github.com/laravel-zero/laravel-zero/assets/14129843/52860542-95dd-411c-a268-88aaba56b574" alt="SSH Vault raw ssh config">
 </p>
 
 ### 🔗 Add a new SSH connection to your config file
-> ssh-vault hosts:add
-
-Streamline the addition of new SSH connections to your config. Interactive inputs for hostname, port, user, and advanced settings like identity file and agent forwarding ensure easy setup and management of remote server access.
+Interactive inputs for quick SSH connection setup.
+```bash
+ssh-vault hosts:add
+```
 <p align="center">
     <img src="https://github.com/laravel-zero/laravel-zero/assets/14129843/b7f75c82-f215-4971-bcd4-b0f748d186b1" alt="SSH Vault raw ssh config">
 </p>
 
 ### 🚮 Remove SSH connection from config file
-> ssh-vault hosts:remove
-
-Efficiently remove one or more SSH connections from your config file using an interactive multi-select menu. This command simplifies decluttering your SSH setup by allowing easy selection and removal of unnecessary connections, ensuring a clean and up-to-date configuration.
+Interactive multi-select menu for removing SSH connections.
+```bash
+ssh-vault hosts:remove
+```
 
 ### 🌐 SSH to a specific host from your config file
-> ssh-vault hosts:connect
-
-Quickly initiate an SSH connection to a specified host from your configuration. Offers a selection menu for easy host choice, and handles connection details, including executing remote commands, efficiently. Ideal for streamlined access to your remote servers.
+Streamlined SSH connection to chosen hosts with detailed options.
+```bash
+ssh-vault hosts:connect
+```
 <p align="center">
     <img src="https://github.com/laravel-zero/laravel-zero/assets/14129843/d5d86036-96a5-4864-a59d-aacf7e1cc816" alt="SSH Vault raw ssh config">
 </p>
+<hr/>
 
 ## Testing
 
