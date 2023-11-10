@@ -2,6 +2,7 @@
 
 // @codeCoverageIgnoreStart
 use App\Enums\OperatingSystem;
+use Illuminate\Support\Str;
 
 if (! function_exists('user')) {
     /**
@@ -51,7 +52,8 @@ if (! function_exists('app_bin')) {
         $composerContent = json_decode($composerContent, true);
 
         // Get the binary name from the 'bin' array in composer.json, assuming it always exists
-        return data_get($composerContent, 'bin.0');
+        $appBin = data_get($composerContent, 'bin.0');
+        return Str::afterLast($appBin, '/');
     }
 }
 
