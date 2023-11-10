@@ -70,13 +70,13 @@ class AddCommand extends Command
 
         $hostParams['User'] = text(
             label: 'User Name:',
-            default: $lastHost ? $lastHost->user() : '',
+            default: $lastHost ? $lastHost->user() ?? '' : '',
             hint: 'Leave empty to use the same username as your local machine',
         );
 
         $hostParams['IdentityFile'] = text(
             label: 'Identity File Location:',
-            default: $lastHost ? $lastHost->identityFile() : '',
+            default: $lastHost ? $lastHost->identityFile() ?? '' : '',
             validate: function ($path) {
                 $path = Str::expandedPath($path);
 
@@ -102,7 +102,7 @@ class AddCommand extends Command
 
         $hostParams['RemoteCommand'] = text(
             label: 'Remote Command:',
-            placeholder: $lastHost ? $lastHost->remoteCommand() : '',
+            placeholder: $lastHost ? $lastHost->remoteCommand() ?? '' : '',
             hint: 'Example: cd /var/www/project-name; exec $SHELL',
         );
 
