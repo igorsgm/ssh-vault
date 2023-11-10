@@ -6,9 +6,7 @@
     <a href="https://packagist.org/packages/igorsgm/ssh-vault">
         <img src="https://img.shields.io/packagist/v/igorsgm/ssh-vault.svg?style=flat-square" alt="Latest Version on Packagist">
     </a>
-    <a href="https://github.com/igorsgm/ssh-vault/actions/workflows/main.yml/badge.svg">
-        <img src="https://img.shields.io/github/actions/workflow/status/igorsgm/ssh-vault/main.yml?style=flat-square" alt="Build Status">
-    </a>
+    <img src="https://img.shields.io/scrutinizer/build/g/igorsgm/ssh-vault/master?style=flat-square" alt="Build Status">
     <img src="https://img.shields.io/scrutinizer/coverage/g/igorsgm/ssh-vault/master?style=flat-square" alt="Test Coverage">
     <img src="https://img.shields.io/scrutinizer/quality/g/igorsgm/ssh-vault/master?style=flat-square" alt="Code Quality">
     <a href="https://packagist.org/packages/igorsgm/ssh-vault">
