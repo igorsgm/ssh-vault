@@ -1,6 +1,6 @@
 <?php
 
-use App\Commands\TableCommand;
+use App\Commands\Hosts\TableCommand;
 use App\Host;
 use Illuminate\Support\Facades\Artisan;
 use Laravel\Prompts\Table;

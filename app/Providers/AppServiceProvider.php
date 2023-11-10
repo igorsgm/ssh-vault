@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -39,7 +40,7 @@ class AppServiceProvider extends ServiceProvider
 
         $hiddenCommands = config('commands.hidden', []);
 
-        config('commands.hidden', array_merge($hiddenCommands, [
+        Config::set('commands.hidden', array_merge($hiddenCommands, [
             \Igorsgm\GitHooks\Console\Commands\RegisterHooks::class,
             \Igorsgm\GitHooks\Console\Commands\PreCommit::class,
             \Igorsgm\GitHooks\Console\Commands\PostCommit::class,

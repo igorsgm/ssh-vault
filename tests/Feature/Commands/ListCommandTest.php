@@ -1,6 +1,6 @@
 <?php
 
-use App\Commands\ListCommand;
+use App\Commands\Hosts\ListCommand;
 use App\Host;
 use Illuminate\Support\Facades\Artisan;
 

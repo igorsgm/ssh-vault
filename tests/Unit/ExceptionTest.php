@@ -1,10 +1,10 @@
 <?php
 
-use App\Commands\ConnectCommand;
-use App\Commands\ListCommand;
-use App\Commands\RawCommand;
-use App\Commands\RemoveCommand;
-use App\Commands\TableCommand;
+use App\Commands\Hosts\ConnectCommand;
+use App\Commands\Hosts\ListCommand;
+use App\Commands\Hosts\RawCommand;
+use App\Commands\Hosts\RemoveCommand;
+use App\Commands\Hosts\TableCommand;
 use App\SshConfig\SshConfig;
 
 it('displays exception message when there are no hosts available', function ($command) {

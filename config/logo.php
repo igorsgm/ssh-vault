@@ -37,7 +37,7 @@ return [
     | to download and use additional fonts: http://www.figlet.org.
     |
     */
-    'font' => storage_path('app/fonts/standard.flf'),
+    'font' => storage_path('app'.DIRECTORY_SEPARATOR.'fonts'.DIRECTORY_SEPARATOR.'standard.flf'),
 
     /*
     |--------------------------------------------------------------------------

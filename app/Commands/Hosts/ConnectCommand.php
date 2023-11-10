@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Commands;
+namespace App\Commands\Hosts;
 
 use App\Concerns\CommandHelper;
 use App\Concerns\InteractsWithIO;
@@ -23,6 +23,14 @@ class ConnectCommand extends Command
      * @var string
      */
     protected $signature = 'hosts:connect {hostOrHostName? : The name of the host or host name to be accessed}';
+
+    /**
+     * {@inheritDoc}
+     */
+    protected $aliases = [
+        'hosts:access',
+        'hosts:ssh',
+    ];
 
     /**
      * The description of the command.

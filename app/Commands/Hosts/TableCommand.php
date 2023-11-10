@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Commands;
+namespace App\Commands\Hosts;
 
 use App\Concerns\CommandHelper;
 use App\Concerns\InteractsWithIO;
