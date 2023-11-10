@@ -29,7 +29,7 @@ class ConnectCommand extends Command
      *
      * @var string
      */
-    protected $description = 'SSH to a host.';
+    protected $description = '🌐 SSH to a specific host from your config file';
 
     /**
      * Execute the console command.

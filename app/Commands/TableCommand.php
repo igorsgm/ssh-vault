@@ -27,7 +27,7 @@ class TableCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Displays the list of SSH connections in a table format';
+    protected $description = '🧮 Displays all SSH connections in a table format';
 
     /**
      * Execute the console command.

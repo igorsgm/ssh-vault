@@ -24,7 +24,7 @@ class RawCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Displays the raw SSH config content';
+    protected $description = '📄 Displays all SSH connections in a raw format';
 
     /**
      * Execute the console command.

@@ -26,7 +26,7 @@ class RemoveCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Remove SSH connection';
+    protected $description = '🗑️ Remove SSH connection from config file';
 
     /**
      * Execute the console command.

@@ -53,7 +53,8 @@ if (! function_exists('app_bin')) {
 
         // Get the binary name from the 'bin' array in composer.json, assuming it always exists
         $appBin = data_get($composerContent, 'bin.0');
-        return Str::afterLast($appBin, '/');
+
+        return Str::afterLast($appBin, '/') ?: null;
     }
 }
 

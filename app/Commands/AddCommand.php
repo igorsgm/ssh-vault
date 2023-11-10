@@ -30,7 +30,7 @@ class AddCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Add new SSH connection';
+    protected $description = '🔗 Add a new SSH connection to your config file';
 
     /**
      * Execute the console command.

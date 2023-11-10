@@ -24,7 +24,7 @@ class ListCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Displays the list of SSH connections in a list format';
+    protected $description = '📋 Displays all SSH connections in a list format';
 
     /**
      * Execute the console command.
