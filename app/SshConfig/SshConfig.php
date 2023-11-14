@@ -110,10 +110,23 @@ class SshConfig
     /**
      * Get the path to the ssh config file.
      */
-    private function configFilePath(): string
+    public function configFilePath(): string
     {
         return Str::of(config('app.ssh-config-path'))
             ->rtrim('/')
+            ->expandedPath()
+            ->toDirectorySeparator()
+            ->toString();
+    }
+
+    /**
+     * Returns the default file path for the SSH identity file.
+     */
+    public function defaultIdentityFilePath(): string
+    {
+        return Str::of(config('app.ssh-config-path'))
+            ->rtrim('/')
+            ->append('/id_rsa')
             ->expandedPath()
             ->toDirectorySeparator()
             ->toString();

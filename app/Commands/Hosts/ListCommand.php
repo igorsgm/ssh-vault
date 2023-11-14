@@ -2,14 +2,14 @@
 
 namespace App\Commands\Hosts;
 
-use App\Concerns\CommandHelper;
+use App\Concerns\HostsCommandHelper;
 use App\Concerns\InteractsWithIO;
 use App\SshConfig\SshConfig;
 use LaravelZero\Framework\Commands\Command;
 
 class ListCommand extends Command
 {
-    use CommandHelper;
+    use HostsCommandHelper;
     use InteractsWithIO;
 
     /**

@@ -2,7 +2,7 @@
 
 namespace App\Commands\Hosts;
 
-use App\Concerns\CommandHelper;
+use App\Concerns\HostsCommandHelper;
 use App\Concerns\InteractsWithIO;
 use App\Host;
 use App\SshConfig\SshConfig;
@@ -14,7 +14,7 @@ use function Laravel\Prompts\select;
 
 class ConnectCommand extends Command
 {
-    use CommandHelper;
+    use HostsCommandHelper;
     use InteractsWithIO;
 
     /**

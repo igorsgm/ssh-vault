@@ -21,9 +21,15 @@ class Host
      */
     private array $config;
 
+    /**
+     * @var string The bash command to execute on the remote host.
+     */
+    private string $bashCommand;
+
     public function __construct($name)
     {
         $this->name = $name;
+        $this->setBashCommand('bash -s');
     }
 
     /**
@@ -119,7 +125,7 @@ class Host
     /**
      * Get the remote command to execute.
      *
-     * @param  bool  $addBash Whether to add "bash -se" at the end of the remote command.
+     * @param  bool  $addBash Whether to add "bash -s" at the end of the remote command.
      */
     public function remoteCommand(bool $addBash = false): ?string
     {
@@ -127,13 +133,16 @@ class Host
         $remoteCommand = Str::of($remoteCommand ?? '')->unquote()->trim()->toString() ?: null;
 
         if ($addBash) {
-            $bashCommand = 'bash -se';
+            $bashCommand = $this->bashCommand();
             $remoteCommand = $remoteCommand ? "$remoteCommand && $bashCommand" : "$bashCommand";
         }
 
         return $remoteCommand;
     }
 
+    /**
+     * Get the name of the Host object
+     */
     public function getName(): string
     {
         return $this->name;
@@ -148,6 +157,24 @@ class Host
         }
 
         return $result;
+    }
+
+    /**
+     * Get the Bash command string.
+     */
+    public function bashCommand(): string
+    {
+        return $this->bashCommand;
+    }
+
+    /**
+     * Set the bash command for the Host
+     */
+    public function setBashCommand(string $bashCommand): self
+    {
+        $this->bashCommand = $bashCommand;
+
+        return $this;
     }
 
     /**
