@@ -104,7 +104,7 @@ trait InteractsWithIO
      */
     public function figlet(string $text, array $options = []): void
     {
-        $figlet = new FigletString($text, array_merge(config('logo'), $options));
+        $figlet = new \App\Overrides\FigletString($text, array_merge(config('figlet'), $options));
         $this->info(trim((string) $figlet, "\n"));
     }
 
