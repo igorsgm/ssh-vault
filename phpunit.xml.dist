@@ -22,5 +22,8 @@
         <include>
             <directory suffix=".php">./app</directory>
         </include>
+        <exclude>
+            <directory suffix=".php">./app/Overrides</directory>
+        </exclude>
     </source>
 </phpunit>

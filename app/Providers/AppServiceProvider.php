@@ -32,9 +32,11 @@ class AppServiceProvider extends ServiceProvider
     private function registerGitHooks(): void
     {
         $gitHooksServiceProvider = \Igorsgm\GitHooks\GitHooksServiceProvider::class;
+        // @codeCoverageIgnoreStart
         if (config('app.env') === 'production' || ! class_exists($gitHooksServiceProvider)) {
             return;
         }
+        // @codeCoverageIgnoreEnd
 
         $this->app->register($gitHooksServiceProvider);
 
