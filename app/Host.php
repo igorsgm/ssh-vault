@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Igorsgm\SshVault;
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;

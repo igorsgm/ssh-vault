@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Concerns;
+namespace Igorsgm\SshVault\Concerns;
 
-use App\Host;
-use App\SshConfig\SshConfig;
+use Igorsgm\SshVault\Host;
+use Igorsgm\SshVault\SshConfig\SshConfig;
 use Illuminate\Support\Collection;
 
 trait HostsCommandHelper

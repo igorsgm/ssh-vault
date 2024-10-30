@@ -1,7 +1,7 @@
 <?php
 
-use App\Commands\Hosts\TableCommand;
-use App\Host;
+use Igorsgm\SshVault\Commands\Hosts\TableCommand;
+use Igorsgm\SshVault\Host;
 use Illuminate\Support\Facades\Artisan;
 use Laravel\Prompts\Table;
 

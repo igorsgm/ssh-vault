@@ -1,7 +1,7 @@
 <?php
 
-use App\Commands\Hosts\ListCommand;
-use App\Host;
+use Igorsgm\SshVault\Commands\Hosts\ListCommand;
+use Igorsgm\SshVault\Host;
 use Illuminate\Support\Facades\Artisan;
 
 it('displays the list of SSH connections', function () {

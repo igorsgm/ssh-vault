@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Commands\Hosts;
+namespace Igorsgm\SshVault\Commands\Hosts;
 
-use App\Concerns\HostsCommandHelper;
-use App\Concerns\InteractsWithIO;
-use App\SshConfig\SshConfig;
+use Igorsgm\SshVault\Concerns\HostsCommandHelper;
+use Igorsgm\SshVault\Concerns\InteractsWithIO;
+use Igorsgm\SshVault\SshConfig\SshConfig;
 use LaravelZero\Framework\Commands\Command;
 
 use function Laravel\Prompts\multiselect;

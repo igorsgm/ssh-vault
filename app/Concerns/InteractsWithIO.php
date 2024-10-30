@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Concerns;
+namespace Igorsgm\SshVault\Concerns;
 
 use function Laravel\Prompts\confirm;
 use function Laravel\Prompts\error;
@@ -102,7 +102,7 @@ trait InteractsWithIO
      */
     public function figlet(string $text, array $options = []): void
     {
-        $figlet = new \App\Overrides\FigletString($text, array_merge(config('figlet'), $options));
+        $figlet = new \Igorsgm\SshVault\Overrides\FigletString($text, array_merge(config('figlet'), $options));
         $this->info(trim((string) $figlet, "\n"));
     }
 

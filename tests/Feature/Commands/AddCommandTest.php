@@ -1,7 +1,7 @@
 <?php
 
 // Test that the command adds a new SSH host correctly
-use App\Commands\Hosts\AddCommand;
+use Igorsgm\SshVault\Commands\Hosts\AddCommand;
 use Illuminate\Support\Facades\File;
 
 it('adds a new SSH connection', function () {

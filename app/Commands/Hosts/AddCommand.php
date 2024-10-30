@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Commands\Hosts;
+namespace Igorsgm\SshVault\Commands\Hosts;
 
-use App\Concerns\InteractsWithIO;
-use App\Host;
-use App\SshConfig\SshConfig;
+use Igorsgm\SshVault\Concerns\InteractsWithIO;
+use Igorsgm\SshVault\Host;
+use Igorsgm\SshVault\SshConfig\SshConfig;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use LaravelZero\Framework\Commands\Command;

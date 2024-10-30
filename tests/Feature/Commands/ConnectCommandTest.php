@@ -1,6 +1,6 @@
 <?php
 
-use App\Commands\Hosts\ConnectCommand;
+use Igorsgm\SshVault\Commands\Hosts\ConnectCommand;
 use Illuminate\Support\Facades\Process;
 
 it('connects to an SSH host', function () {

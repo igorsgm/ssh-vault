@@ -1,6 +1,6 @@
 <?php
 
-use App\Commands\Hosts\RemoveCommand;
+use Igorsgm\SshVault\Commands\Hosts\RemoveCommand;
 
 it('removes selected SSH connections', function () {
     $hosts = $this->sshConfig->hosts();

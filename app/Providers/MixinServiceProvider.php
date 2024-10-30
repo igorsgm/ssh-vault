@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Providers;
+namespace Igorsgm\SshVault\Providers;
 
-use App\Mixins\StringableMixin;
-use App\Mixins\StrMixin;
+use Igorsgm\SshVault\Mixins\StringableMixin;
+use Igorsgm\SshVault\Mixins\StrMixin;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Illuminate\Support\Stringable;

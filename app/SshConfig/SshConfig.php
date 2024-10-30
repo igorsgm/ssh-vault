@@ -1,8 +1,8 @@
 <?php
 
-namespace App\SshConfig;
+namespace Igorsgm\SshVault\SshConfig;
 
-use App\Host;
+use Igorsgm\SshVault\Host;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;

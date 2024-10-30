@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Mixins;
+namespace Igorsgm\SshVault\Mixins;
 
 use Closure;
 use Illuminate\Support\Str;
