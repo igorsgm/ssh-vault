@@ -28,7 +28,7 @@ final class FigletString
     public function __construct(string $string, array $options)
     {
         $this->string = $string;
-        $this->figlet = new Figlet;
+        $this->figlet = new Figlet();
 
         $this->parseOptions($options);
     }

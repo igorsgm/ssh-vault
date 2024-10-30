@@ -20,7 +20,7 @@ trait HostsCommandHelper
     /**
      * Generate an array of select options for the hosts.
      */
-    public function hostsSelectOptions(Collection $hosts = null): array
+    public function hostsSelectOptions(?Collection $hosts = null): array
     {
         $hosts = $hosts ?? app(SshConfig::class)->hosts();
 

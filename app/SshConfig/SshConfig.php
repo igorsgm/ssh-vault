@@ -74,7 +74,7 @@ class SshConfig
     /**
      * Finds a host by its name or hostname.
      *
-     * @param  string  $hostOrHostName The name or hostname of the host to find.
+     * @param  string  $hostOrHostName  The name or hostname of the host to find.
      */
     public function findHost(string $hostOrHostName): ?Host
     {

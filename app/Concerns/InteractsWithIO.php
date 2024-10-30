@@ -2,8 +2,6 @@
 
 namespace App\Concerns;
 
-use LaravelZero\Framework\Components\Logo\FigletString;
-
 use function Laravel\Prompts\confirm;
 use function Laravel\Prompts\error;
 use function Laravel\Prompts\note;

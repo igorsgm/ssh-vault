@@ -125,7 +125,7 @@ class Host
     /**
      * Get the remote command to execute.
      *
-     * @param  bool  $addBash Whether to add "bash -s" at the end of the remote command.
+     * @param  bool  $addBash  Whether to add "bash -s" at the end of the remote command.
      */
     public function remoteCommand(bool $addBash = false): ?string
     {
@@ -180,7 +180,7 @@ class Host
     /**
      * Convert the SSH connection information to a SSH command string.
      *
-     * @param  bool  $addBash Whether to add the remote command wrapped in a Bash shell (default: true)
+     * @param  bool  $addBash  Whether to add the remote command wrapped in a Bash shell (default: true)
      */
     public function toSshCommandString(bool $addBash = true): string
     {

@@ -24,14 +24,11 @@ it('prompts for selection when the hostOrHostName parameter is not defined', fun
     // Prepare a list of hosts as it would appear in the command prompt.
     $options = $this->hostsSelectOptions();
 
-    // Prepare the expected choices due to Laravel Prompts Fallback
-    $optionsWithFallback = [...array_keys($options), ...$options];
-
     Process::fake();
 
     // Since hostOrHostName is not provided, the command should ask the user to select a host.
     $this->artisan(ConnectCommand::class)
-        ->expectsChoice('Select host to connect:', $mockedHost->getName(), $optionsWithFallback)
+        ->expectsChoice('Select host to connect:', $mockedHost->getName(), $options)
         ->expectsOutputToContain('Connecting to ')
         ->expectsOutputToContain("And executing: '{$mockedHost->remoteCommand(true)}'")
         ->assertSuccessful();

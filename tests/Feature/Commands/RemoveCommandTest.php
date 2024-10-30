@@ -6,16 +6,11 @@ it('removes selected SSH connections', function () {
     $hosts = $this->sshConfig->hosts();
     $nameToRemove = $hosts->first()->getName();
 
-    $options = $this->hostsSelectOptions();
-
-    // Prepare the expected choices, including 'None' and index numbers due to Laravel Prompts Fallback
-    $optionsWithFallback = ['', ...array_keys($options), 'None', ...$options];
-
     $this->artisan(RemoveCommand::class)
         ->expectsChoice(
             'Select hosts to remove:',
-            $hosts->first()->getName(),
-            $optionsWithFallback
+            [$nameToRemove],
+            $this->hostsSelectOptions(),
         )
         ->assertExitCode(0);
 
