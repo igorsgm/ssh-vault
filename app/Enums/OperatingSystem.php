@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Enums;
+namespace Igorsgm\SshVault\Enums;
 
 // @codeCoverageIgnoreStart
 enum OperatingSystem: string

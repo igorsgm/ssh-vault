@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Commands\Hosts;
+namespace Igorsgm\SshVault\Commands\Hosts;
 
-use App\Concerns\HostsCommandHelper;
-use App\Concerns\InteractsWithIO;
-use App\Host;
-use App\SshConfig\SshConfig;
+use Igorsgm\SshVault\Concerns\HostsCommandHelper;
+use Igorsgm\SshVault\Concerns\InteractsWithIO;
+use Igorsgm\SshVault\Host;
+use Igorsgm\SshVault\SshConfig\SshConfig;
 use Illuminate\Support\Facades\Process;
 use LaravelZero\Framework\Commands\Command;
 use Symfony\Component\Process\Process as SymfonyProcess;

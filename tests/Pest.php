@@ -11,7 +11,7 @@
 |
 */
 
-use App\Host;
+use Igorsgm\SshVault\Host;
 
 uses(Tests\TestCase::class)->in(__DIR__);
 

@@ -67,9 +67,9 @@ return [
     */
 
     'providers' => [
-        App\Providers\AppServiceProvider::class,
-        \App\Providers\SshConfigServiceProvider::class,
-        \App\Providers\MixinServiceProvider::class,
+        \Igorsgm\SshVault\Providers\AppServiceProvider::class,
+        \Igorsgm\SshVault\Providers\SshConfigServiceProvider::class,
+        \Igorsgm\SshVault\Providers\MixinServiceProvider::class,
     ],
 
     /*

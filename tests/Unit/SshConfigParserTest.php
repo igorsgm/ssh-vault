@@ -1,6 +1,6 @@
 <?php
 
-use App\SshConfig\SshConfigParser;
+use Igorsgm\SshVault\SshConfig\SshConfigParser;
 
 it('returns an empty collection for unmatched SSH config content', function () {
     $parser = new SshConfigParser();

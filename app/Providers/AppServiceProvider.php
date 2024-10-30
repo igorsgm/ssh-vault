@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace Igorsgm\SshVault\Providers;
 
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;

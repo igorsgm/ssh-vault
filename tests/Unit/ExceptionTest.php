@@ -1,11 +1,11 @@
 <?php
 
-use App\Commands\Hosts\ConnectCommand;
-use App\Commands\Hosts\ListCommand;
-use App\Commands\Hosts\RawCommand;
-use App\Commands\Hosts\RemoveCommand;
-use App\Commands\Hosts\TableCommand;
-use App\SshConfig\SshConfig;
+use Igorsgm\SshVault\Commands\Hosts\ConnectCommand;
+use Igorsgm\SshVault\Commands\Hosts\ListCommand;
+use Igorsgm\SshVault\Commands\Hosts\RawCommand;
+use Igorsgm\SshVault\Commands\Hosts\RemoveCommand;
+use Igorsgm\SshVault\Commands\Hosts\TableCommand;
+use Igorsgm\SshVault\SshConfig\SshConfig;
 
 it('displays exception message when there are no hosts available', function ($command) {
     // Create an empty SSH config file

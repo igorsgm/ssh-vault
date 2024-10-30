@@ -2,8 +2,8 @@
 
 namespace Tests;
 
-use App\Concerns\HostsCommandHelper;
-use App\SshConfig\SshConfig;
+use Igorsgm\SshVault\Concerns\HostsCommandHelper;
+use Igorsgm\SshVault\SshConfig\SshConfig;
 use Illuminate\Support\Facades\File;
 use Laravel\Prompts\Prompt;
 use LaravelZero\Framework\Testing\TestCase as BaseTestCase;

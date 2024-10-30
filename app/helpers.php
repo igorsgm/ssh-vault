@@ -1,7 +1,7 @@
 <?php
 
 // @codeCoverageIgnoreStart
-use App\Enums\OperatingSystem;
+use Igorsgm\SshVault\Enums\OperatingSystem;
 use Illuminate\Support\Str;
 
 if (! function_exists('user')) {
